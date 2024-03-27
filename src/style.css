@@ -1,0 +1,49 @@
+* {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+  }
+  :root {
+    --Purple: #824085;
+    --gray: #8688a6;
+    --white: #edf8f8;
+    --black: #100421;
+    --soft-pink: #f8f2f3;
+  }
+  body {
+    background-color: var(--soft-pink);
+  }
+  header {
+    font-size: 1rem;
+    border: 0;
+    width: 100%;
+    padding: auto;
+    margin: 1rem 0;
+  }
+  h2 {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin: 2rem 0;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 500px){
+    header {
+        font-size: 3.5rem;
+        margin: 3rem auto;
+      }
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+      }
+  }
+  
+  
+
+
+
+
+
+
+
+  
