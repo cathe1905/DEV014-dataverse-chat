@@ -17,3 +17,10 @@ TODO:
 2.- Pasar "root element" a router.
 3.- Invocar el router para renderizar la vista correcta.
 */
+
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active');
+});
