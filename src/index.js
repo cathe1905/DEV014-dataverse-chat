@@ -27,7 +27,7 @@ TODO:
 import Home from './views/Home.js';
 
 // ... import other views
-import { setRootEl, setRoutes, onURLChange } from './router.js';
+import { setRootEl, setRoutes, onURLChange, } from './router.js';
 
 // Define your routes and their associated views
 const routes = {
