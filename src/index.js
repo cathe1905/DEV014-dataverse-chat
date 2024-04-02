@@ -1,21 +1,3 @@
-// En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
-
-/*
-import Example from './views/Example.js';
-
-Ejemplo de definición de rutas:
-
-const routes = {
-    "/": Example,
-    ...
-}
-*/
-/*
-TODO:
-1.- Definir rutas en router.
-2.- Pasar "root element" a router.
-3.- Invocar el router para renderizar la vista correcta.
-*/
 
 // const menuToggle = document.getElementById('menu-toggle');
 // const menu = document.getElementById('menu');
@@ -24,19 +6,15 @@ TODO:
 //   menu.classList.toggle('active');
 // });
 
-import Home from './views/Home.js';
-
+import Home from "./views/Home.js";
+import Error from "./views/Error.js";
 // ... import other views
-import { setRootEl, setRoutes, onURLChange, } from './router.js';
+import { setRootEl, setRoutes, onURLChange } from "./router.js";
 
 // Define your routes and their associated views
 const routes = {
-  '/': Home,
-  '/error': () => {
-    const errorEl = document.createElement("div");
-    errorEl.textContent = "Error: Page not found";
-    return errorEl;
-  }
+  "/": Home,
+  "/error": Error,
   // ...
 };
 
@@ -45,7 +23,7 @@ setRoutes(routes);
 
 // Set the root element where views will be rendered
 window.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root")
+  const root = document.getElementById("root");
   setRootEl(root);
-  onURLChange(window.location)
+  onURLChange(window.location);
 });

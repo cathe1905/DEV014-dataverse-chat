@@ -7,7 +7,7 @@ export const setRootEl = (el) => {
 
 export const setRoutes = (routes) => {
   // optional Throw errors if routes isn't an object
-  if (typeof routes !== 'object')  {
+  if (typeof routes !== "object") {
     throw new Error("This is not an object");
   }
   // optional Throw errors if routes doesn't define an /error route
@@ -19,13 +19,13 @@ export const setRoutes = (routes) => {
   // assign ROUTES
   ROUTES = routes;
 };
-const renderView = (pathname) => {
+const renderView = (pathname, props = {}) => {
   // clear the root element
   rootEl.innerHTML = "";
   // find the correct view in ROUTES for the pathname
   const view = ROUTES[pathname] || ROUTES["/error"];
   // render the correct view passing the value of props
-  const viewElement = view();
+  const viewElement = view(props);
   // add the view element to the DOM root element
   rootEl.appendChild(viewElement);
 };
