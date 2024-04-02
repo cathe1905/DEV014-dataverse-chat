@@ -37,7 +37,9 @@ export default function Home() {
         </button>
       </div>`;
   viewEl.appendChild(infohtml);
-
+  
+function cards(data) {
+  limpiarHTML();
   const ulList = document.createElement("ul");
   ulList.classList.add("styleUl");
 
@@ -60,33 +62,39 @@ export default function Home() {
     liSinger.appendChild(dlSinger);
     ulList.appendChild(liSinger);
     viewEl.appendChild(ulList);
+    
   });
+   
+}
+
+cards(data) 
 
   //variables
   const mainGenre = viewEl.querySelector("#mainGenre");
+  console.log(mainGenre)
   const compute = viewEl.querySelector("#compute");
   const changeCompute = viewEl.querySelector("#conteinerCompute");
   changeCompute.style.display = "none";
   const cleanButton = viewEl.querySelector("#buttonClear");
   const sort = viewEl.querySelector("#sort");
   let filteredData = [];
-  //let sortedData;
+  let sortedData;
 
   //eventos
   mainGenre.addEventListener("change", (e) => {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
-    //renderItems(filteredData);
+    cards(filteredData)
   });
 
   sort.addEventListener("change", (e) => {
     const optionSort = e.target.value;
     if (filteredData.length > 0) {
       sortedData = sortData(filteredData, "yearOfBirth", optionSort);
-      // renderItems(sortedData);
+      cards(sortedData) 
     } else {
       sortedData = sortData(data, "yearOfBirth", optionSort);
-      //renderItems(sortedData);
+      cards(sortedData)
     }
   });
 
@@ -106,14 +114,17 @@ export default function Home() {
 
   cleanButton.addEventListener("click", () => {
     // renderItems(data);
-    changeCompute.innerHTML = "";
+    cards(data);
     mainGenre.options[0].selected = true;
     sort.options[0].selected = true;
     filteredData = [];
   });
 
-  return viewEl;
-  //   const viewEl = document.createElement("div");
-  //   viewEl.textContent = "Welcome to the home page!";
-  //   return viewEl;
+  function limpiarHTML() {
+    while (viewEl.children[1]) {
+      viewEl.removeChild(viewEl.children[1]);
+    }
+  }
+
+    return viewEl;
 }
