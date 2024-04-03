@@ -37,20 +37,20 @@ export default function Home() {
         </button>
       </div>`;
   viewEl.appendChild(infohtml);
-  
-function cards(data) {
-  limpiarHTML();
-  const ulList = document.createElement("ul");
-  ulList.classList.add("styleUl");
 
-  data.forEach((singer) => {
-    const liSinger = document.createElement("li");
-    liSinger.classList.add("styleLi");
-    const dlSinger = document.createElement("dl");
-    liSinger.setAttribute("itemtype", "singers");
-    liSinger.setAttribute("itemscope", "");
+  function cards(data) {
+    limpiarHTML();
+    const ulList = document.createElement("ul");
+    ulList.classList.add("styleUl");
 
-    dlSinger.innerHTML = `
+    data.forEach((singer) => {
+      const liSinger = document.createElement("li");
+      liSinger.classList.add("styleLi");
+      const dlSinger = document.createElement("dl");
+      liSinger.setAttribute("itemtype", "singers");
+      liSinger.setAttribute("itemscope", "");
+
+      dlSinger.innerHTML = `
           <dt class="nameSinger">${singer.name}</dt>
           <img src="${singer.imageUrl}">
           <dt itemprop="shortDescription" class="shortDescription" >${singer.shortDescription}</dt>
@@ -59,19 +59,16 @@ function cards(data) {
           <dt itemprop="mainGenre" class="mainGenre"> <span>Género:</span>${singer.facts.mainGenre}</dt>
         `;
 
-    liSinger.appendChild(dlSinger);
-    ulList.appendChild(liSinger);
-    viewEl.appendChild(ulList);
-    
-  });
-   
-}
+      liSinger.appendChild(dlSinger);
+      ulList.appendChild(liSinger);
+      viewEl.appendChild(ulList);
+    });
+  }
 
-cards(data) 
+  cards(data);
 
   //variables
   const mainGenre = viewEl.querySelector("#mainGenre");
-  console.log(mainGenre)
   const compute = viewEl.querySelector("#compute");
   const changeCompute = viewEl.querySelector("#conteinerCompute");
   changeCompute.style.display = "none";
@@ -84,17 +81,17 @@ cards(data)
   mainGenre.addEventListener("change", (e) => {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
-    cards(filteredData)
+    cards(filteredData);
   });
 
   sort.addEventListener("change", (e) => {
     const optionSort = e.target.value;
     if (filteredData.length > 0) {
       sortedData = sortData(filteredData, "yearOfBirth", optionSort);
-      cards(sortedData) 
+      cards(sortedData);
     } else {
       sortedData = sortData(data, "yearOfBirth", optionSort);
-      cards(sortedData)
+      cards(sortedData);
     }
   });
 
@@ -126,5 +123,5 @@ cards(data)
     }
   }
 
-    return viewEl;
+  return viewEl;
 }

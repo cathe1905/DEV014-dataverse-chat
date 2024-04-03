@@ -8,15 +8,22 @@
 
 import Home from "./views/Home.js";
 import Error from "./views/Error.js";
-// ... import other views
+import ApiKey from "./views/ApiKey.js";
+import ChatGrupal from "./views/Chatgrupal.js";
+import ChatIndividual from "./views/Chatindividual.js";
+
 import { setRootEl, setRoutes, onURLChange } from "./router.js";
+
 
 // Define your routes and their associated views
 const routes = {
   "/": Home,
-  "/error": Error,
-  // ...
+  "/error": Error, 
+  "/api-key": ApiKey, 
+  "/chat-grupal": ChatGrupal, 
+  "/chat-individual": ChatIndividual
 };
+
 
 // Assign the routes
 setRoutes(routes);
