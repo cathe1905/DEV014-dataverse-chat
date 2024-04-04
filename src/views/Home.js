@@ -1,6 +1,6 @@
 import { data } from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
-
+import { navigateTo } from "../router.js";
 export default function Home() {
   const viewEl = document.createElement("div");
   const infohtml = document.createElement("body");
@@ -35,6 +35,8 @@ export default function Home() {
         <button data-testid="button-clear" id="buttonClear">
           Limpiar Filtros
         </button>
+        <button id="goToChatGrupalBtn">Ir al Chat Grupal</button>
+
       </div>`;
   viewEl.appendChild(infohtml);
 
@@ -44,23 +46,28 @@ export default function Home() {
     ulList.classList.add("styleUl");
 
     data.forEach((singer) => {
+      const enlace = document.createElement("a");
+      enlace.id = `${singer.id}`;
+      enlace.addEventListener("click", () => {
+        // navigateTo("/about", { name: "Xochitl" }));
+        navigateTo("/ChatIndividual", { id: `${singer.id}` });
+      });
       const liSinger = document.createElement("li");
       liSinger.classList.add("styleLi");
       const dlSinger = document.createElement("dl");
       liSinger.setAttribute("itemtype", "singers");
       liSinger.setAttribute("itemscope", "");
-
       dlSinger.innerHTML = `
-          <dt class="nameSinger">${singer.name}</dt>
-          <img src="${singer.imageUrl}">
-          <dt itemprop="shortDescription" class="shortDescription" >${singer.shortDescription}</dt>
-          <dt itemprop="sort" class="yearOfBirth"> <span>Año de Nacimiento:</span> ${singer.facts.yearOfBirth}</dt>
-          <dt itemprop="placeOfBirth" class="placeOfBirth"> <span>Lugar de Nacimiento:</span> ${singer.facts.placeOfBirth}</dt>
-          <dt itemprop="mainGenre" class="mainGenre"> <span>Género:</span>${singer.facts.mainGenre}</dt>
-        `;
-
+            <dt class="nameSinger">${singer.name}</dt>
+            <img src="${singer.imageUrl}">
+            <dt itemprop="shortDescription" class="shortDescription" >${singer.shortDescription}</dt>
+            <dt itemprop="sort" class="yearOfBirth"> <span>Año de Nacimiento:</span> ${singer.facts.yearOfBirth}</dt>
+            <dt itemprop="placeOfBirth" class="placeOfBirth"> <span>Lugar de Nacimiento:</span> ${singer.facts.placeOfBirth}</dt>
+            <dt itemprop="mainGenre" class="mainGenre"> <span>Género:</span>${singer.facts.mainGenre}</dt>
+          `;
       liSinger.appendChild(dlSinger);
-      ulList.appendChild(liSinger);
+      enlace.appendChild(liSinger);
+      ulList.appendChild(enlace);
       viewEl.appendChild(ulList);
     });
   }
@@ -122,6 +129,10 @@ export default function Home() {
       viewEl.removeChild(viewEl.children[1]);
     }
   }
+  const goToChatGrupalBtn = viewEl.querySelector('#goToChatGrupalBtn');
+  goToChatGrupalBtn.addEventListener('click', () => {
+    navigateTo('/ChatGrupal'); 
+  });
 
   return viewEl;
 }

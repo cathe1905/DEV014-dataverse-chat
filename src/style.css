@@ -1,9 +1,7 @@
 * {
   font-family: "Lato", sans-serif;
   margin: 0;
-  box-sizing: border-box;
 }
-
 :root {
   --Purple: #824085;
   --gray: #8688a6;
@@ -11,52 +9,65 @@
   --black: #100421;
   --soft-pink: #f8f2f3;
 }
-
 body {
   background-color: var(--soft-pink);
-  font-size: 1rem;
 }
-
 header {
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 2rem auto;
+  font-size: 3.5rem;
+  border: 0;
+  width: 100%;
+  padding: auto;
+  margin: 3rem auto;
 }
-
-h1, h2 {
-  font-weight: 900;
-  text-align: center;
+@media (max-width: 500px) {
+  header {
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
 }
-
 h1 {
-  font-size: 2rem;
+  text-align: center;
+  font-weight: 900;
 }
-
 h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 4rem;
 }
-
+@media (max-width: 500px) {
+  h2 {
+    font-size: 0.9rem;
+    margin: 2rem 0;
+  }
+}
 main {
   margin: 0 auto;
-  width: 90%;
   max-width: 120rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 90%;
 }
-
 .flex-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
 }
-
+@media (max-width: 500px) {
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+}
+@media (max-width: 500px) {
+  #buttonClear {
+    margin-top: 0.2rem;
+  }
+}
 #mainGenre,
 #sort,
-#compute,
-#buttonClear {
+#compute {
   border-radius: 1.5rem;
   font-size: 1rem;
   font-weight: 900;
@@ -67,14 +78,61 @@ main {
   border: none;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  margin-top: 1rem;
 }
-
+@media (max-width: 500px) {
+  #mainGenre,
+  #sort,
+  #compute {
+    border-radius: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: var(--Purple);
+    color: var(--white);
+    height: 3rem;
+    width: 8rem;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+}
 select option {
   color: var(--black);
   background-color: var(--white);
 }
 
+#mainGenre:hover {
+  background-color: var(--gray);
+}
+#sort:hover {
+  background-color: var(--gray);
+}
+#compute:hover {
+  background-color: var(--gray);
+}
+#buttonClear {
+  background-color: var(--white);
+  font-weight: 900;
+  height: 4rem;
+  width: 10rem;
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 500px) {
+  #buttonClear {
+    background-color: var(--white);
+    font-weight: 700;
+    height: 3rem;
+    width: 6rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+#buttonClear:hover {
+  background-color: var(--gray);
+}
 .styleUl {
   display: flex;
   flex-wrap: wrap;
@@ -84,25 +142,22 @@ select option {
   margin-top: 3rem;
   gap: 3rem;
 }
-
 .styleLi {
   width: 20rem;
-  height: auto; /* Cambiado a altura automática */
-  margin-bottom: 2rem; /* Ajustado el margen inferior */
+  height: 35rem;
+  margin-bottom: 1rem;
   padding: 2rem;
   text-align: center;
   background-color: var(--white);
   border-radius: 2rem;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-
 .styleLi img {
-  max-width: 100%; /* Ajuste para que la imagen no se desborde del contenedor */
-  height: auto;
+  width: 20rem;
+  height: 21rem;
   border-radius: 2rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
-
 .styleLi .nameSinger {
   font-weight: 900;
   font-size: 2rem;
@@ -110,16 +165,20 @@ select option {
   text-align: start;
 }
 
-.shortDescription,
+.shortDescription {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .description {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
+.styleLi {
+  text-align: justify;
+}
 span {
   font-weight: 900;
 }
-
 footer {
   position: fixed;
   bottom: 0;
@@ -130,64 +189,12 @@ footer {
   padding: 10px;
   font-weight: 700;
 }
-
-@media (min-width: 500px) {
-  header {
-    font-size: 3.5rem;
-    margin: 3rem auto;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin: 0;
-  }
-
-  main {
-    flex-direction: row;
-    align-items: initial;
-  }
-
-  .flex-container {
-    justify-content: space-around;
-  }
-
-  #buttonClear {
-    margin-top: 0.2rem;
+#conteinerCompute{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+@media (max-width: 500px) {
+  #conteinerCompute {
+  font-size: 0.7rem;
   }
 }
-
-@media (min-width: 800px) {
-  .styleLi {
-    width: 25rem;
-    height: auto;
-  }
-
-  .styleLi img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .nameSinger {
-    font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .styleLi {
-    width: 30rem;
-  }
-
-  .styleLi img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .nameSinger {
-    font-size: 3rem;
-  }
-}
-

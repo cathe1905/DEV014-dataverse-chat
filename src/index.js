@@ -9,7 +9,7 @@
 import Home from "./views/Home.js";
 import Error from "./views/Error.js";
 import ApiKey from "./views/ApiKey.js";
-import ChatGrupal from "./views/Chatgrupal.js";
+import ChatGrupal from "./views/Chatgrupal.js"; 
 import ChatIndividual from "./views/Chatindividual.js";
 
 import { setRootEl, setRoutes, onURLChange } from "./router.js";
@@ -20,8 +20,8 @@ const routes = {
   "/": Home,
   "/error": Error, 
   "/api-key": ApiKey, 
-  "/chat-grupal": ChatGrupal, 
-  "/chat-individual": ChatIndividual
+  "/ChatGrupal": ChatGrupal,
+  "/ChatIndividual": ChatIndividual 
 };
 
 
