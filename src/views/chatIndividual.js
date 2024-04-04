@@ -11,9 +11,9 @@ const ChatIndividual = (props) => {
     </section>
     <section>
       <input type="text" placeholder="Escribe aqui tu mensaje">
-      <button type="button">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fes%2Fpng-zfmqo&psig=AOvVaw0M0kzPOBhsSfZl10wn54TC&ust=1712267207345000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiTpcyCp4UDFQAAAAAdAAAAABAE" alt="boton enviar mensaje">
-      </button>
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Gato_%282%29_REFON.jpg" alt="boton enviar mensaje">
+      </a>
     </section>
   `;
   return chat;
