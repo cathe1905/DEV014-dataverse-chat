@@ -1,6 +1,6 @@
-import { filterData, sortData, computeStats } from "../src/dataFunctions.js";
+import { filterData, sortData, computeStats } from "../src/lib/dataFunctions.js";
 
-import { data as fakeData } from "./data.js";
+import { data as fakeData } from "./suite.js";
 //test
 describe("Check that filter function works", () => {
   it("returns All of singer who main genre is Pop", () => {
