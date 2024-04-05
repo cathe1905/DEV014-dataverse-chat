@@ -12,8 +12,11 @@
 body {
   background-color: var(--soft-pink);
 }
+#root {
+  width: 100%;
+}
 header {
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: 0;
   width: 100%;
   padding: auto;
@@ -23,69 +26,67 @@ header {
 h1 {
   text-align: center;
   font-weight: 900;
+  color: purple;
 }
 h2 {
   text-align: center;
   font-size: 0.9rem;
   font-weight: 700;
-  margin: 2rem 0;
-  margin-bottom: 4rem;
+  margin: 1.5rem 0;
+  /* margin-bottom: 4rem; */
 }
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 #mainGenre,
 #sort,
 #compute {
-  border-radius: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  background: var(--Purple);
-  color: var(--white);
-  height: 3rem;
-  width: 8rem;
+  font-size: 1rem;
+  font-weight: 900;
+  color: purple;
+  height: 2rem;
+  width: 9.7rem;
   border: none;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   text-align: center;
 }
+/* #mainGenr {
+  width: 9.3rem
+} */
 
-select option {
-  color: var(--black);
-  background-color: var(--white);
-}
-
-#mainGenre:hover {
-  background-color: var(--gray);
-}
-#sort:hover {
-  background-color: var(--gray);
-}
+#mainGenre:hover,
+#sort:hover,
 #compute:hover {
-  background-color: var(--gray);
+  background-color: var(--soft-pink);
 }
-/* #buttonClear,
+
+
+#buttonClear,
 #api-key,
 #goToChatGrupalBtn {
-  background-color: var(--white);
     font-weight: 700;
     height: 3rem;
     width: 6rem;
     font-size: 0.8rem;
-    border: none;
+    box-shadow:  
+    5px 0px rgba(124, 1, 118, 0.5),
+    0px 5px 0px rgba(87, 1, 104, 0.5);
+    background-color: var(--soft-pink);
+    border-color: purple;
     border-radius: .5rem;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-top: 0.2rem;
-} */
+    font-weight: 700;
+}
 
 
 #buttonClear:hover,
-#api-key,
-#goToChatGrupalBtn {
+#api-key:hover,
+#goToChatGrupalBtn:hover {
   background-color: var(--gray);
 } 
 .styleUl {
@@ -145,17 +146,87 @@ footer {
   font-weight: 700;
 }
 #conteinerCompute{
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  width: 90%;
 }
 .grid {
-  display: none;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-color: white;
+  padding: 1rem 0 2rem 0;
+  margin-bottom: 2rem;
+  
 }
 .contenedorCards {
   margin: 0 auto;
   max-width: 120rem;
   width: 90%;
 }
+
+
+/* Chat individual */
+.first-group-chat {
+  display: flex;
+  justify-content: start;
+  padding: 2rem;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+
+}
+.back-img{
+  width: 60px;
+  height: 60px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.singer-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4rem;
+  margin-right: 1rem;
+}
+
+.singer-name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: .5rem;
+}
+
+.singer-desc {
+  font-style: italic;
+}
+.conversation{
+  height: 32rem;
+}
+.botones-chatIn {
+  display: none;
+}
+
+.flex-input {
+  display: flex;
+  justify-content: center;
+}
+.input-msj{
+  width: 21rem;
+  height: 3rem;
+  border-radius: 3rem;
+  padding-left: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  margin-right: 2rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+.button-send{
+  width: 3rem;
+  height: 3rem;
+}
+
 @media (min-width: 500px) {
   header {
     font-size: 3.5rem;
@@ -175,15 +246,9 @@ footer {
   #api-key,
   #goToChatGrupalBtn {
     font-weight: 900;
-    height: 4rem;
+    height: 3rem;
     width: 10rem;
     font-size: 1rem;
-    box-shadow:  
-    5px 0px rgba(124, 1, 118, 0.5),
-    0px 5px 0px rgba(87, 1, 104, 0.5);
-    background-color: var(--soft-pink);
-    border-color: purple;
-    border-radius: .5rem;
     margin-top: 0.2rem;
   }
 
@@ -195,26 +260,238 @@ footer {
   #mainGenre,
   #sort,
   #compute {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 900;
-    height: 4rem;
-    width: 10rem;
+    height: 2rem;
+    width: 14rem;
+    background-color: transparent;
   }
   #conteinerCompute {
     font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
     }
 
     .grid {
-      display: grid;
+      box-shadow: 0px 5px 10px rgba(128, 128, 128, 0.5);
       grid-template-columns: 1fr 1fr;
-      gap: 8rem;
+      grid-template-rows: 1fr;
+      gap: 14rem;
       background-color: white;
+      padding: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .segundo-grupo {
-      text-align: center;
-      display: flex;
+    .body{
       flex-direction: row;
-    justify-content: space-around;
+      width: 100%;
+      justify-content: center;
     }
+    
+    .first-group-chat {
+      flex-direction: column;
+      justify-content: start;
+      padding: 2rem;
+    }
+
+    .botones-chatIn {
+      display: flex;
+      justify-content: right;
+      margin-top: 2rem;
+    }
+
+    #api-key-chat,
+    #goToChatGrupalBtn-chat {
+      font-weight: 700;
+      height: 2rem;
+      width: 6rem;
+      font-size: 0.8rem;
+      box-shadow:  
+      5px 0px rgba(124, 1, 118, 0.5),
+      0px 5px 0px rgba(87, 1, 104, 0.5);
+      background-color: var(--soft-pink);
+      border-color: purple;
+      border-radius: .5rem;
+      margin-top: 0.2rem;
+      font-weight: 700;
+    }
+
+    #api-key-chat{
+      margin-right: 1rem;
+    }
+
+    #api-key-chat:hover,
+    #goToChatGrupalBtn-chat:hover {
+      background-color: var(--gray);
+    }
+
+    .input-msj{
+      width: 40rem;
+      max-width: 90rem;
+      margin-left: 1rem;
+
+      
+    }
+    .singer-name {
+      font-size: 2rem;
+      margin-top: 2rem;
+      margin-left: 3rem;
+    }
+
+    .singer-desc {
+      margin-left: 3rem;
+      margin-right: 2rem;
+    }
+
+    .back-img{
+      margin-bottom: 3rem;
+    }
+
+    .div-singer-img {
+      display: flex;
+      justify-content: center;
+    }
+    .singer-img {
+      width: 200px;
+      height: 200px;
+      margin-right: 1rem;
+      text-align: center;
+      border-radius: 50%;
+     
+    }
+
+    .conversation{
+      height: 39.5rem;
+    }
+
+    .first-group-chat{
+ background-color: white
+}
+
+   
+}
+.flex-container {
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.segundo-grupo {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+justify-content: space-around;
+}
+
+.titleError {
+  font-size: 3rem;
+  font-weight: 800;
+  color: purple;
+  text-align: center;
+  margin: 6rem 0rem;
+}
+
+.taylor {
+  display: flex;
+  justify-content: center;
+}
+
+.taylor img {
+  max-width: 600px;
+  height: auto; 
+}
+
+/* Chat grupal */
+.chat-container {
+  display: grid;
+  grid-template-columns: auto auto; /* Solo una columna */
+  grid-template-rows: auto auto auto ; /* Primera fila para el botón, segunda fila para las imágenes, tercera fila para el mensaje y el botón de enviar */
+  height: 100vh;
+  background-color: var(--soft-pink);
+}
+.images-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Una sola columna para las imágenes */
+  align-items: center;
+  margin-left: 40px;
+  height: 70vh;
+}
+.images-container img {
+  border-radius: 50%; /* Hace que la imagen sea circular */
+}
+.back-button {
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  background-color: var(--soft-pink);
+}
+.back-button img{
+  width: 3rem;
+  height: 3rem;
+}
+.message-input {
+  width: 100%;
+  height: 40%;
+  place-self: end;
+  border-radius: 3rem;
+  place-self: center;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  grid-column: 2;
+  grid-row: 3;
+}
+.send-button {
+  width: 5rem;
+  height: 4rem;
+  border: none;
+  place-self: center;
+}
+.send-button img {
+  width: 100%;
+  height: 100%;
+  grid-column: 2;
+  grid-row: 3;
+}
+.message-input,
+.send-button {
+  margin-top: 10px;
+}
+@media (min-width: 500px) {
+  .chat-container {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    background-color: #F8F2F3;
+  }
+  .back-button img{
+    width: 2rem;
+    height: 2rem;
+  }
+  .images-container {
+    grid-column: 1;
+    grid-row: 2;
+    align-items: start;
+  }
+  .images-container img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+  }
+  .message-input {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .message-input:hover{
+    background-color: #BEBEC5;
+  }
+  .send-button {
+    grid-column: 3;
+    grid-row: 3;
+    /* justify-self: start;*/
+    /* align-self: end; */
+    margin-right: 2rem;
+  }
+  .send-button:hover{
+    background-color: #895CC7;
+    border-radius: 50px;
+  }
+
 }
