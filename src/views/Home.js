@@ -1,6 +1,7 @@
 import { data } from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { navigateTo } from "../router.js";
+
 export default function Home() {
   const viewEl = document.createElement("div");
   const infohtml = document.createElement("body");
@@ -93,6 +94,7 @@ export default function Home() {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
     cards(filteredData);
+    cerrarMenu();
   });
 
   sort.addEventListener("change", (e) => {
@@ -100,9 +102,11 @@ export default function Home() {
     if (filteredData.length > 0) {
       sortedData = sortData(filteredData, "yearOfBirth", optionSort);
       cards(sortedData);
+      cerrarMenu();
     } else {
       sortedData = sortData(data, "yearOfBirth", optionSort);
       cards(sortedData);
+      cerrarMenu();
     }
   });
 
@@ -118,6 +122,7 @@ export default function Home() {
     } else {
       changeCompute.style.display = "none";
     }
+    cerrarMenu();
   });
 
   cleanButton.addEventListener("click", () => {
@@ -126,6 +131,7 @@ export default function Home() {
     mainGenre.options[0].selected = true;
     sort.options[0].selected = true;
     filteredData = [];
+    cerrarMenu();
   });
 
   function limpiarHTML() {
@@ -142,6 +148,6 @@ export default function Home() {
   goToApiKey.addEventListener("click", () => {
     navigateTo("/api-key");
   });
-
+  
   return viewEl;
 }
