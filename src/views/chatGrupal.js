@@ -1,5 +1,4 @@
 import { data } from "../data/dataset.js";
-
 const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
@@ -7,12 +6,12 @@ const ChatGrupal = () => {
 
   const backButton = document.createElement("button");
   const backButtonImage = document.createElement("img");
-  backButtonImage.src = "https://i.pinimg.com/564x/e5/3d/bb/e53dbbf853dd8e8532650034f30ad6ed.jpg";
+  backButtonImage.src =
+    "https://i.pinimg.com/564x/e5/3d/bb/e53dbbf853dd8e8532650034f30ad6ed.jpg";
   backButton.appendChild(backButtonImage);
   backButton.classList.add("back-button");
-  
-  container.appendChild(backButton);
 
+  container.appendChild(backButton);
 
   // Crear un div para las imágenes
   const imagesContainer = document.createElement("div");
@@ -23,6 +22,17 @@ const ChatGrupal = () => {
     const image = document.createElement("img");
     image.src = data[i].imageUrl;
     imagesContainer.appendChild(image);
+  }
+
+  // Crear un div para las imágenes
+  const nameContainer = document.createElement("div");
+  nameContainer.classList.add("name-Container");
+
+  // Agregar los nombres al div de nombres
+  for (let i = 0; i < 8; i++) {
+    const name = document.createElement("p");
+    name.textContent = data[i].name;
+    nameContainer.appendChild(name);
   }
 
   // Crear el input de texto
@@ -42,9 +52,8 @@ const ChatGrupal = () => {
   container.appendChild(imagesContainer);
   container.appendChild(inputText);
   container.appendChild(button);
-
+  container.appendChild(nameContainer);
   return container;
 };
 
 export default ChatGrupal;
-
