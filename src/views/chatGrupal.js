@@ -16,7 +16,6 @@ const ChatGrupal = () => {
   backButton.classList.add("back-button");
   informationContainer.appendChild(backButton);
 
-
   const imagesandTextContainer = document.createElement("div");
   imagesandTextContainer.classList.add("imagesandtext-container");
   informationContainer.appendChild(imagesandTextContainer);
@@ -42,10 +41,9 @@ const ChatGrupal = () => {
     nameandshortdescription.appendChild(shortDescription);
 
     imagesandTextContainersingle.appendChild(nameandshortdescription);
-    
+
     imagesandTextContainer.appendChild(imagesandTextContainersingle);
   }
-  
 
   // contenedor de apikey y chat
   const chatContainer = document.createElement("div");
