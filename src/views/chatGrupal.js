@@ -1,50 +1,78 @@
 import { data } from "../data/dataset.js";
-
 const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
-  container.classList.add("chat-container");
+  container.classList.add("container");
+  // contenedor de infomcación e images
+  const informationContainer = document.createElement("div");
+  informationContainer.classList.add("information-container");
+  container.appendChild(informationContainer);
 
   const backButton = document.createElement("button");
   const backButtonImage = document.createElement("img");
-  backButtonImage.src = "https://i.pinimg.com/564x/e5/3d/bb/e53dbbf853dd8e8532650034f30ad6ed.jpg";
+  backButtonImage.src =
+    "https://i.pinimg.com/564x/e5/3d/bb/e53dbbf853dd8e8532650034f30ad6ed.jpg";
   backButton.appendChild(backButtonImage);
   backButton.classList.add("back-button");
-  
-  container.appendChild(backButton);
+  informationContainer.appendChild(backButton);
 
+  const imagesandTextContainer = document.createElement("div");
+  imagesandTextContainer.classList.add("imagesandtext-container");
+  informationContainer.appendChild(imagesandTextContainer);
 
-  // Crear un div para las imágenes
-  const imagesContainer = document.createElement("div");
-  imagesContainer.classList.add("images-container");
+  for (let i = 0; i < data.length; i++) {
+    const imagesandTextContainersingle = document.createElement("div");
+    imagesandTextContainersingle.classList.add("imagesandtextsingle-container");
 
-  // Agregar las imágenes al div de imágenes
-  for (let i = 0; i < 8; i++) {
     const image = document.createElement("img");
     image.src = data[i].imageUrl;
-    imagesContainer.appendChild(image);
+    imagesandTextContainersingle.appendChild(image);
+
+    const nameandshortdescription = document.createElement("div");
+    nameandshortdescription.classList.add("nameandshort-description");
+
+    const name = document.createElement("p");
+    name.textContent = data[i].name;
+    name.classList.add("name-class");
+    nameandshortdescription.appendChild(name);
+
+    const shortDescription = document.createElement("p");
+    shortDescription.textContent = data[i].shortDescription;
+    nameandshortdescription.appendChild(shortDescription);
+
+    imagesandTextContainersingle.appendChild(nameandshortdescription);
+
+    imagesandTextContainer.appendChild(imagesandTextContainersingle);
   }
 
-  // Crear el input de texto
+  // contenedor de apikey y chat
+  const chatContainer = document.createElement("div");
+  chatContainer.classList.add("chat-container");
+  container.appendChild(chatContainer);
+  const apiKeyButton = document.createElement("button");
+  apiKeyButton.classList.add("apiKey-button");
+  apiKeyButton.textContent = "API Key";
+  chatContainer.appendChild(apiKeyButton);
+
+  // contenedor de input y boton
+  const inputContainer = document.createElement("div");
+  inputContainer.classList.add("input-Container");
+  container.appendChild(inputContainer);
+
   const inputText = document.createElement("input");
   inputText.setAttribute("type", "text");
   inputText.setAttribute("placeholder", "Escribe aqui tu mensaje");
   inputText.classList.add("message-input");
+  inputContainer.appendChild(inputText);
 
-  // Crear el botón con la imagen
-  const button = document.createElement("button");
+  const buttonSend = document.createElement("button");
   const buttonImage = document.createElement("img");
   buttonImage.src = "https://cdn-icons-png.freepik.com/512/8138/8138457.png";
-  button.appendChild(buttonImage);
-  button.classList.add("send-button");
+  buttonSend.appendChild(buttonImage);
+  buttonSend.classList.add("button-Send");
 
-  // Agregar los elementos al contenedor principal
-  container.appendChild(imagesContainer);
-  container.appendChild(inputText);
-  container.appendChild(button);
-
+  inputContainer.appendChild(buttonSend);
   return container;
 };
 
 export default ChatGrupal;
-
