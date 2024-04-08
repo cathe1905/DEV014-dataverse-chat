@@ -1,3 +1,5 @@
+import { setApiKey } from "../lib/apiKey.js";
+
 const ApiKey = () => {
   // Crear el contenedor principal
   const containerApikey = document.createElement("div");
@@ -31,6 +33,15 @@ const ApiKey = () => {
   saveButton.textContent = "Guardar";
   formContainer.appendChild(saveButton);
 
+  saveButton.addEventListener("click", () => {
+    if (inputApiKeyText.value === "") {
+      alert("Debes ingresar una ApiKey valida");
+      saveButton.disabled = true;
+    } else {
+      saveButton.disabled = false;
+      setApiKey(inputApiKeyText.value);
+    }
+  });
   return containerApikey;
 };
 
