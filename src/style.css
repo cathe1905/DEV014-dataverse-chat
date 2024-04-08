@@ -446,6 +446,11 @@ footer {
   height: 3rem;
 }
 
+.form-Container {
+  display: flex;
+  justify-content: center;
+}
+
 .apiKey-button {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   background-color: var(--Purple);
@@ -464,6 +469,24 @@ footer {
 .apiKey-button:hover {
   background-color: #8688a6;
 }
+.apiKey-save-button {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--Purple);
+  color: var(--white);
+  border: none;
+  border-radius: 2rem;
+  font-weight: 700;
+  height: 2rem;
+  width: 6rem;
+  font-size: 0.8rem;
+  border-radius: 2rem;
+  justify-self: end;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.apiKey-save-button:hover {
+  background-color: #8688a6;
+}
 .message-input {
   place-self: end;
   border-radius: 3rem;
@@ -475,6 +498,19 @@ footer {
   height: 40px;
   width: calc(100% - 80px);
 }
+
+.message-api-key-input {
+  place-self: end;
+  border-radius: 3rem;
+  align-self: center;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  grid-column: 1;
+  grid-row: 2;
+  height: 40px;
+  width: calc(100% - 80px);
+}
+
 .button-Send {
   grid-column-start: 2;
   grid-column-end: 2;

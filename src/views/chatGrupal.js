@@ -74,31 +74,6 @@ const ChatGrupal = () => {
   buttonSend.classList.add("button-Send");
 
   inputContainer.appendChild(buttonSend);
-
-  //   // Crear un div para el contenedor de Name
-  //   const nameContainer = document.createElement("div");
-  //   nameContainer.classList.add("name-Container");
-
-  //   // Agregar los nombres al div de Name
-  //   for (let i = 0; i < data.length; i++) {
-  //
-  //     name.textContent = data[i].name;
-  //     nameContainer.appendChild(name);
-  //   }
-
-  // // Crear un div para el contenedor de shortDescription
-  // const shortDescriptionContainer = document.createElement("div");
-  // shortDescriptionContainer.classList.add("shortDescription-Container");
-
-  // // Agregar los nombres al div de shortDescription
-  // for (let i = 0; i < data.length; i++) {
- 
-  // }
-
-  //   // Agregar los elementos al contenedor principal
-
-  //   container.appendChild(nameContainer);
-  //   container.appendChild(shortDescriptionContainer);
   return container;
 };
 
