@@ -578,7 +578,6 @@ footer {
     grid-column-start: 2;
     grid-column-end: 3;
   }
-
   .name-class {
 font-weight: 900;
 }
@@ -619,5 +618,8 @@ font-weight: 900;
   .send-button:hover {
     background-color: #895cc7;
     border-radius: 50px;
+  }
+  .message-api-key-input{
+    width: 800px;
   }
 }
