@@ -35,6 +35,16 @@ const queryStringToObject = (queryString) => {
   const obj = Object.fromEntries(params);
   return obj;
 };
+export const navigateTo = (pathname, props = {}) => {
+  // Update window history with pushState
+  const queryString = Object.keys(props).map(key => `${key}=${props[key]}`).join('&');
+  // Concatenar la cadena de consulta al pathname
+  const fullPath = `${pathname}?${queryString}`;
+  // Actualizar la URL
+  window.history.pushState({}, '', fullPath);
+  // Renderizar la vista
+  renderView(pathname, props);
+};
 
 export const onURLChange = (location) => {
   // parse the location for the pathname and search params
