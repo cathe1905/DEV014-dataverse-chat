@@ -15,15 +15,37 @@ const ChatGrupal = () => {
   backButton.appendChild(backButtonImage);
   backButton.classList.add("back-button");
   informationContainer.appendChild(backButton);
-  const imagesContainer = document.createElement("div");
-  imagesContainer.classList.add("images-container");
+
+
+  const imagesandTextContainer = document.createElement("div");
+  imagesandTextContainer.classList.add("imagesandtext-container");
+  informationContainer.appendChild(imagesandTextContainer);
 
   for (let i = 0; i < data.length; i++) {
+    const imagesandTextContainersingle = document.createElement("div");
+    imagesandTextContainersingle.classList.add("imagesandtextsingle-container");
+
     const image = document.createElement("img");
     image.src = data[i].imageUrl;
-    imagesContainer.appendChild(image);
+    imagesandTextContainersingle.appendChild(image);
+
+    const nameandshortdescription = document.createElement("div");
+    nameandshortdescription.classList.add("nameandshort-description");
+
+    const name = document.createElement("p");
+    name.textContent = data[i].name;
+    name.classList.add("name-class");
+    nameandshortdescription.appendChild(name);
+
+    const shortDescription = document.createElement("p");
+    shortDescription.textContent = data[i].shortDescription;
+    nameandshortdescription.appendChild(shortDescription);
+
+    imagesandTextContainersingle.appendChild(nameandshortdescription);
+    
+    imagesandTextContainer.appendChild(imagesandTextContainersingle);
   }
-  informationContainer.appendChild(imagesContainer);
+  
 
   // contenedor de apikey y chat
   const chatContainer = document.createElement("div");
@@ -45,44 +67,13 @@ const ChatGrupal = () => {
   inputText.classList.add("message-input");
   inputContainer.appendChild(inputText);
 
-    const buttonSend = document.createElement("button");
-    const buttonImage = document.createElement("img");
-    buttonImage.src = "https://cdn-icons-png.freepik.com/512/8138/8138457.png";
-    buttonSend.appendChild(buttonImage);
-    buttonSend.classList.add("button-Send");
+  const buttonSend = document.createElement("button");
+  const buttonImage = document.createElement("img");
+  buttonImage.src = "https://cdn-icons-png.freepik.com/512/8138/8138457.png";
+  buttonSend.appendChild(buttonImage);
+  buttonSend.classList.add("button-Send");
 
-    inputContainer.appendChild(buttonSend);
-
-  //   // Crear un div para el contenedor de Name
-  //   const nameContainer = document.createElement("div");
-  //   nameContainer.classList.add("name-Container");
-
-  //   // Agregar los nombres al div de Name
-  //   for (let i = 0; i < data.length; i++) {
-  //     const name = document.createElement("p");
-  //     name.textContent = data[i].name;
-  //     nameContainer.appendChild(name);
-  //   }
-
-  // // Crear un div para el contenedor de shortDescription
-  // const shortDescriptionContainer = document.createElement("div");
-  // shortDescriptionContainer.classList.add("shortDescription-Container");
-
-  // // Agregar los nombres al div de shortDescription
-  // for (let i = 0; i < data.length; i++) {
-  //   const shortDescription = document.createElement("p");
-  //   shortDescription.textContent = data[i].shortDescription;
-  //   shortDescriptionContainer.appendChild(shortDescription);
-  // }
-
- 
-
-  
-
-  //   // Agregar los elementos al contenedor principal
-
-  //   container.appendChild(nameContainer);
-  //   container.appendChild(shortDescriptionContainer);
+  inputContainer.appendChild(buttonSend);
   return container;
 };
 
