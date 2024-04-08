@@ -148,6 +148,6 @@ export default function Home() {
   goToApiKey.addEventListener("click", () => {
     navigateTo("/api-key");
   });
-  
+
   return viewEl;
 }
