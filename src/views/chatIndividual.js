@@ -22,7 +22,7 @@ const ChatIndividual = (props) => {
       <button id="goToChatGrupalBtn-chat">Chat Grupal</button>
     </div>
     
-      <div class="conversation"></div>
+      <div id="conversationI" class="conversation"></div>
       <div class="flex-input">
       <input  id="input-message" class="input-msj" type="text" placeholder="Escribe aqui tu mensaje">
       <button id="send-message" type="submit"><img class="button-send" src="https://cdn-icons-png.freepik.com/512/8138/8138457.png" alt="boton enviar mensaje"></button>
@@ -36,6 +36,8 @@ const ChatIndividual = (props) => {
   sendMessage.addEventListener("click", () => {
     
     communicateWithOpenAI(inputMessage.value, singerId);
+    const divChat= chat.querySelector('#conversationI');
+    const parrafo= document.createElement('p')
   });
 
   return chat;
