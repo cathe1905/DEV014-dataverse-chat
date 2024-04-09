@@ -1,4 +1,5 @@
 import { setApiKey } from "../lib/apiKey.js";
+import { navigateTo } from "../router.js";
 
 const ApiKey = () => {
   // Crear el contenedor principal
@@ -12,6 +13,10 @@ const ApiKey = () => {
   backButton.appendChild(backButtonImage);
   backButton.classList.add("back-button");
   containerApikey.appendChild(backButton);
+
+  backButton.addEventListener("click", () => {
+    navigateTo("/");
+  });
 
   const formContainer = document.createElement("div");
   formContainer.classList.add("form-Container");

@@ -1,5 +1,6 @@
 import { data } from "../data/dataset.js";
 import { communicateWithOpenAI } from "../lib/openAIApi.js";
+import { navigateTo } from "../router.js";
 const ChatIndividual = (props) => {
   const singerId = props.id;
   const singer = data.find((singer) => singer.id === singerId);
@@ -30,14 +31,29 @@ const ChatIndividual = (props) => {
       
     </section>
   `;
+
+  const backButton = chat.querySelector("#back-home");
+  backButton.addEventListener("click", () => {
+    navigateTo("/");
+  });
+
+  const apiKeyButton = chat.querySelector("#api-key-chat");
+  apiKeyButton.addEventListener("click", () => {
+    navigateTo("/api-key");
+  });
+
+  const groupChatButton = chat.querySelector("#goToChatGrupalBtn-chat");
+  groupChatButton.addEventListener("click", () => {
+    navigateTo("/ChatGrupal");
+  });
+
   const sendMessage = chat.querySelector("#send-message");
   const inputMessage = chat.querySelector("#input-message");
 
   sendMessage.addEventListener("click", () => {
-    
     communicateWithOpenAI(inputMessage.value, singerId);
-    const divChat= chat.querySelector('#conversationI');
-    const parrafo= document.createElement('p')
+    //const divChat = chat.querySelector("#conversationI");
+    //const parrafo = document.createElement("p");
   });
 
   return chat;

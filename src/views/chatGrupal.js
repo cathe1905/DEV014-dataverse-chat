@@ -1,4 +1,6 @@
 import { data } from "../data/dataset.js";
+import { navigateTo } from "../router.js";
+import { communicateWithOpenAI } from "../lib/openAIApi.js";
 const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
@@ -16,11 +18,19 @@ const ChatGrupal = () => {
   backButton.classList.add("back-button");
   informationContainer.appendChild(backButton);
 
+  backButton.addEventListener("click", () => {
+    navigateTo("/");
+  });
+
   const imagesandTextContainer = document.createElement("div");
   imagesandTextContainer.classList.add("imagesandtext-container");
   informationContainer.appendChild(imagesandTextContainer);
 
+  const idSinger = [];
+
   for (let i = 0; i < data.length; i++) {
+    idSinger.push(data[i].id);
+
     const imagesandTextContainersingle = document.createElement("div");
     imagesandTextContainersingle.classList.add("imagesandtextsingle-container");
 
@@ -54,6 +64,10 @@ const ChatGrupal = () => {
   apiKeyButton.textContent = "API Key";
   chatContainer.appendChild(apiKeyButton);
 
+  apiKeyButton.addEventListener("click", () => {
+    navigateTo("/api-key");
+  });
+
   // contenedor de input y boton
   const inputContainer = document.createElement("div");
   inputContainer.classList.add("input-Container");
@@ -70,6 +84,10 @@ const ChatGrupal = () => {
   buttonImage.src = "https://cdn-icons-png.freepik.com/512/8138/8138457.png";
   buttonSend.appendChild(buttonImage);
   buttonSend.classList.add("button-Send");
+
+  buttonSend.addEventListener("click", () => {
+    communicateWithOpenAI(inputText.value, idSinger);
+  });
 
   inputContainer.appendChild(buttonSend);
   return container;
