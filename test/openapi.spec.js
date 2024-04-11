@@ -21,12 +21,32 @@ const Shakira = {
 
 describe("test de comunicación con open Ai", () => {
   it("hay una respuesta", () => {
-    global.fetch = jest.fn(() => Promise.resolve({ ok: true, json:()=> Promise.resolve('A tipos como tuuuuuuuu') }));
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve("la comunicación es establece correctamente"),
+      })
+    );
     communicateWithOpenAI("cual es tu instrumento favorito", Shakira.id).then(
       (res) => {
         console.log(res);
         expect(res).not.toBeNull();
       }
     );
+  });
+});
+
+describe("communicateWithOpenAI", () => {
+  it("should return example data", async () => {
+    jest.mock("../src/lib/openAIApi.js", () => ({
+      communicateWithOpenAI: jest.fn(() => Promise.resolve("example")),
+    }));
+
+    const { communicateWithOpenAI } = require("../src/lib/openAIApi.js");
+
+    const data = await communicateWithOpenAI();
+
+    expect(data).toBe("example");
   });
 });
