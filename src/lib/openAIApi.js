@@ -6,15 +6,14 @@ import { getApiKey } from "./apiKey.js";
 export const communicateWithOpenAI = (messages, id) => {
   const promises = [];
   if (Array.isArray(id)) {
-    console.log("este es un array");
     for (let i = 0; i < id.length; i++) {
-      const result = solicitude(id[i])
-      promises.push(result)
+      const result = solicitude(id[i]);
+      promises.push(result);
     }
   } else {
-    console.log("No es un array");
+    const result = solicitude(id);
+    promises.push(result);
   }
-  console.log(promises)
   function solicitude(id) {
     const OPENAI_API_KEY = getApiKey();
     const data = {
@@ -40,12 +39,17 @@ export const communicateWithOpenAI = (messages, id) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        return data.choices;
       })
       .catch((error) => {
         throw error;
       });
   }
+  return Promise.all(promises)
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => console.log(error));
 
   //Aquí es donde debes implementar la petición con fetch o axios
 };
