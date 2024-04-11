@@ -7,11 +7,13 @@ export default function Home() {
   const infohtml = document.createElement("body");
   infohtml.innerHTML = `
   <header>
+  <button id="menu-toggle" aria-label="Abrir menú">&#9776;</button>
       <h1>Tu artista favorito, ¡aquí!</h1>
     </header>
     <main>
       <h2>Encuentra la información más top de tus artistas favoritos</h2>
-      <div class="grid">
+      <div class="grid" id="menu">
+      <button id="close-menu" aria-label="Cerrar menú">×</button>
         <div class="flex-container">
           <div>
             <label for="mainGenre"></label>
@@ -142,6 +144,17 @@ export default function Home() {
   const goToApiKey = viewEl.querySelector("#api-key");
   goToApiKey.addEventListener("click", () => {
     navigateTo("/api-key");
+  });
+  viewEl.querySelector('#menu-toggle').addEventListener('click', function() {
+    var menu = viewEl.querySelector('#menu');
+    var isOpen = menu.style.left === "0px";
+    menu.style.left = isOpen ? "-250px" : "0";
+    viewEl.querySelector('#menu-toggle').style.display="none"
+  });
+  viewEl.querySelector('#close-menu').addEventListener('click', function() {
+    viewEl.querySelector('#menu').style.left = "-250px";
+    viewEl.querySelector('#menu-toggle').style.display = "block";
+    
   });
 
   return viewEl;
