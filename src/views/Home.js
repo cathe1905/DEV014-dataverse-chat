@@ -7,12 +7,12 @@ export default function Home() {
   const infohtml = document.createElement("body");
   infohtml.innerHTML = `
   <header>
-  <button id="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+  <button id="menu-toggle" class="menu-toogle" aria-label="Abrir menú">&#9776;</button>
       <h1>Tu artista favorito, ¡aquí!</h1>
     </header>
     <main>
       <h2>Encuentra la información más top de tus artistas favoritos</h2>
-      <div class="grid" id="menu">
+      <div class="grid menuStart" id="menu">
       <button id="close-menu" aria-label="Cerrar menú">×</button>
         <div class="flex-container">
           <div>
@@ -96,10 +96,12 @@ export default function Home() {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
     cards(filteredData);
+    menuClose();
   });
 
   sort.addEventListener("change", (e) => {
     const optionSort = e.target.value;
+    menuClose();
     if (filteredData.length > 0) {
       sortedData = sortData(filteredData, "yearOfBirth", optionSort);
       cards(sortedData);
@@ -111,6 +113,7 @@ export default function Home() {
 
   compute.addEventListener("click", function () {
     const cumputeResult = computeStats(data);
+    menuClose();
     if (changeCompute.style.display === "none") {
       changeCompute.style.display = "block";
       changeCompute.innerHTML =
@@ -126,6 +129,7 @@ export default function Home() {
   cleanButton.addEventListener("click", () => {
     // renderItems(data);
     cards(data);
+    menuClose();
     mainGenre.options[0].selected = true;
     sort.options[0].selected = true;
     filteredData = [];
@@ -145,17 +149,19 @@ export default function Home() {
   goToApiKey.addEventListener("click", () => {
     navigateTo("/api-key");
   });
-  viewEl.querySelector('#menu-toggle').addEventListener('click', function() {
-    var menu = viewEl.querySelector('#menu');
-    var isOpen = menu.style.left === "0px";
-    menu.style.left = isOpen ? "-250px" : "0";
-    viewEl.querySelector('#menu-toggle').style.display="none"
-  });
-  viewEl.querySelector('#close-menu').addEventListener('click', function() {
-    viewEl.querySelector('#menu').style.left = "-250px";
-    viewEl.querySelector('#menu-toggle').style.display = "block";
-    
-  });
+
+  //menu hamburguesa
+  const menu = viewEl.querySelector('#menu');
+  viewEl.querySelector('#menu-toggle').addEventListener('click', menuOpen);
+  viewEl.querySelector('#close-menu').addEventListener('click', menuClose);
+
+  function menuOpen() {
+    menu.classList.add('menuOpen')
+    menu.classList.remove('menuStart')
+  }
+  function menuClose() {
+    menu.classList.add('menuStart');   
+  }
 
   return viewEl;
 }
