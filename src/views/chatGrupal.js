@@ -1,6 +1,6 @@
 import { data } from "../data/dataset.js";
 import { navigateTo } from "../router.js";
-import { communicateWithOpenAI } from "../lib/openAIApi.js";
+// import { communicateWithOpenAI } from "../lib/openAIApi.js";
 const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
@@ -85,12 +85,12 @@ const ChatGrupal = () => {
   buttonSend.appendChild(buttonImage);
   buttonSend.classList.add("button-Send");
 
-  buttonSend.addEventListener("click", async () => {
-    const respuesta= await communicateWithOpenAI(inputText.value, idSinger);
-    respuesta.forEach(elemento => console.log(elemento[0].message.content))
-  });
+  // buttonSend.addEventListener("click", async () => {
+  //   const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
+  //   respuesta.forEach((elemento) => console.log(elemento[0].message.content));
+  // });
 
-  inputContainer.appendChild(buttonSend);
+  // inputContainer.appendChild(buttonSend);
   return container;
 };
 
