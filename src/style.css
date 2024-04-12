@@ -27,6 +27,7 @@ h1 {
   text-align: center;
   font-weight: 900;
   color: purple;
+  margin-top: 2rem;
 }
 h2 {
   text-align: center;
@@ -36,12 +37,12 @@ h2 {
   /* margin-bottom: 4rem; */
 }
 
-.flex-container {
+/* .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 1rem;
-}
+} */
 
 #mainGenre,
 #sort,
@@ -54,15 +55,20 @@ h2 {
   border: none;
   background-color: transparent;
   text-align: center;
+  margin: 1rem 0;
+  display:inline-block
 }
-/* #mainGenr {
-  width: 9.3rem
-} */
+
+option {
+  width: 250px;
+  font-size: .7rem;
+}
 
 #mainGenre:hover,
 #sort:hover,
 #compute:hover {
-  background-color: var(--soft-pink);
+  background-color: var(--gray);
+  width: 250px;
 }
 
 #buttonClear,
@@ -78,6 +84,7 @@ h2 {
   border-radius: 0.5rem;
   margin-top: 0.2rem;
   font-weight: 700;
+  margin-bottom: 2rem;
 }
 
 #buttonClear:hover,
@@ -150,10 +157,9 @@ footer {
 }
 .grid {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 30% 30%;
   background-color: white;
-  padding: 1rem 0 2rem 0;
-  margin-bottom: 2rem;
+  padding: 1rem 0;
 }
 .contenedorCards {
   margin: 0 auto;
@@ -288,11 +294,6 @@ footer {
     font-size: 2.5rem;
     margin-top: 0;
   }
-  .flex-container {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
 
   #buttonClear,
   #api-key,
@@ -302,6 +303,8 @@ footer {
     width: 10rem;
     font-size: 1rem;
     margin-top: 0.2rem;
+    padding: 0;
+    margin: 0 0.5rem;
   }
 
   #buttonClear:hover,
@@ -318,6 +321,10 @@ footer {
     width: 14rem;
     background-color: transparent;
   }
+  option {
+    width: auto;
+    font-size: 1rem;
+  }
   #conteinerCompute {
     font-size: 1.5rem;
     text-align: center;
@@ -328,7 +335,7 @@ footer {
     box-shadow: 0px 5px 10px rgba(128, 128, 128, 0.5);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 14rem;
+    gap: 10rem;
     background-color: white;
     padding: 2rem;
     margin-bottom: 3rem;
@@ -422,15 +429,21 @@ footer {
   } */
 }
 .flex-container {
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  height: 15rem;
+  width: 250px;
 }
 .segundo-grupo {
   text-align: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+  padding: 2rem;
 }
 
 .titleError {
@@ -689,7 +702,20 @@ footer {
     width: 800px;
   }
 }
-#menu-toggle {
+
+.menuOpen {
+  left: 0px;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f4f4f4;
+  transition: left 0.3s ease;
+  z-index: 1;
+  overflow-y: auto;
+}
+.menu-toogle {
+  display: block;
   position: fixed;
   top: 10px;
   left: 10px;
@@ -699,7 +725,9 @@ footer {
   background: none;
   border: none;
 }
-#menu {
+
+
+.menuStart {
   position: fixed;
   top: 0;
   left: -250px;
@@ -711,7 +739,9 @@ footer {
   overflow-y: auto;
 }
 
+
 #close-menu {
+  display: block;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -720,10 +750,39 @@ footer {
   background: none;
   border: none;
 }
+
+
 @media only screen and (min-width: 500px) {
-  #menu-toggle {
+  /* .menuStart {
+ display: none;
+  } */
+  .menu-toogle {
     display: none;
   }
+  .hidden{
+    display: none;
+  }
+  #close-menu {
+    display: none;
+  }
+  .flex-container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: auto;
+  }
+  .segundo-grupo {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+    padding: 0;
+  }
+  /* .menuOpen {
+    display: none;
+  } */
 
   #menu {
     position: static;
@@ -749,6 +808,7 @@ footer {
 }
 
 .user-message {
+
   text-align: right;
   margin-bottom: 10px;
 }
