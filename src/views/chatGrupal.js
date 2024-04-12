@@ -5,6 +5,7 @@ const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
   container.classList.add("container");
+
   // contenedor de infomcación e images
   const informationContainer = document.createElement("div");
   informationContainer.classList.add("information-container");
@@ -85,12 +86,29 @@ const ChatGrupal = () => {
   buttonSend.appendChild(buttonImage);
   buttonSend.classList.add("button-Send");
 
-  // buttonSend.addEventListener("click", async () => {
-  //   const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
-  //   respuesta.forEach((elemento) => console.log(elemento[0].message.content));
-  // });
+  inputContainer.appendChild(buttonSend);
+  buttonSend.addEventListener("click", async () => {
+    const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
+    chatContainer.innerHTML = "";
+    const userMessageContainer = document.createElement("div");
+    userMessageContainer.classList.add("user-message");
+    const userMessageText = document.createElement("p");
+    userMessageText.textContent = inputText.value;
+    userMessageContainer.appendChild(userMessageText);
+    chatContainer.appendChild(userMessageContainer);
 
-  // inputContainer.appendChild(buttonSend);
+    respuesta.forEach((elemento) => {
+      const messageContainer = document.createElement("div");
+      messageContainer.classList.add("response-message");
+      const messageText = document.createElement("p");
+      messageText.textContent = elemento[0].message.content;
+      messageContainer.appendChild(messageText);
+      chatContainer.appendChild(messageContainer);
+    });
+
+    chatContainer.style.overflowY = "auto";
+  });
+
   return container;
 };
 
