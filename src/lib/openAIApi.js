@@ -49,7 +49,9 @@ export const communicateWithOpenAI = (messages, id) => {
     .then((results) => {
       return results;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      throw error;
+    });
 
   //Aquí es donde debes implementar la petición con fetch o axios
 };
