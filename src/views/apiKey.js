@@ -2,7 +2,6 @@ import { setApiKey } from "../lib/apiKey.js";
 import { navigateTo } from "../router.js";
 
 const ApiKey = () => {
-  // Crear el contenedor principal
   const containerApikey = document.createElement("div");
   containerApikey.classList.add("containerapikey");
 
