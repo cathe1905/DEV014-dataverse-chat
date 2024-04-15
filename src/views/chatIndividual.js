@@ -52,12 +52,6 @@ const ChatIndividual = (props) => {
     navigateTo("/ChatGrupal");
   });
 
-  //   sendMessage.addEventListener("click", async () => {
-  //    const respuesta= await communicateWithOpenAI(inputMessage.value, singerId);
-  //    console.log(respuesta[0][0].message.content)
-  //     const divChat = chat.querySelector("#conversationI");
-  //     const parrafo = document.createElement("p");
-  //   });
 
   const chatContainer = chat.querySelector("#conversationI");
   const sendMessage = chat.querySelector("#send-message");
