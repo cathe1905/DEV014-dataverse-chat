@@ -27,22 +27,14 @@ h1 {
   text-align: center;
   font-weight: 900;
   color: purple;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 h2 {
   text-align: center;
   font-size: 0.9rem;
   font-weight: 700;
   margin: 1.5rem 0;
-  /* margin-bottom: 4rem; */
 }
-
-/* .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1rem;
-} */
 
 #mainGenre,
 #sort,
@@ -148,6 +140,7 @@ footer {
   padding: 10px;
   font-weight: 700;
 }
+/* Chat individual */
 #conteinerCompute {
   font-size: 1rem;
   font-weight: 700;
@@ -167,12 +160,6 @@ footer {
   width: 90%;
 }
 
-/* Chat individual */
-/* .first-group-chat {
-  display: flex;
-  justify-content: start;
-  padding: 2rem;
-} */
 .body {
   display: grid;
   height: 100vh;
@@ -209,10 +196,6 @@ footer {
   display: none;
 }
 
-/* .flex-input {
-  display: flex;
-  justify-content: center;
-} */
 .input-msj {
   width: 21rem;
   height: 3rem;
@@ -236,9 +219,6 @@ footer {
   grid-template-columns: 1fr 2fr 2fr;
 }
 
-/* .conversationI {
-  display: block;
-} */
 
 .flex-Input {
   display: grid;
@@ -285,6 +265,9 @@ footer {
     padding-left: 20px;
     display: block;
     margin: 0;
+  }
+  h1 {
+    margin-top: 1rem;
   }
   header {
     font-size: 3.5rem;
@@ -403,10 +386,6 @@ footer {
     margin-right: 1.5em;
   }
 
-  /* .back-img {
-    margin-bottom: 3rem;
-  } */
-
   .div-singer-img {
     display: flex;
     justify-content: center;
@@ -423,10 +402,6 @@ footer {
   .conversation {
     height: 39.5rem;
   }
-
-  /* .first-group-chat {
-    background-color: white;
-  } */
 }
 .flex-container {
   display: flex;
@@ -495,19 +470,19 @@ footer {
 }
 .imagesandtext-container {
   display: grid;
-  grid-template-columns: 1fr; /* Una sola columna para las imágenes */
+  grid-template-columns: 1fr;
   justify-items: center;
   gap: 30px;
   height: calc(100% - 5rem);
   overflow: scroll;
 }
 .imagesandtext-container img {
-  border-radius: 50%; /* Hace que la imagen sea circular */
+  border-radius: 50%; 
   width: 80px;
   height: 80px;
 }
 .imagesandtext-container::-webkit-scrollbar {
-  width: 0; /* Oculta la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+  width: 0; 
 }
 .imagesandtext-container p {
   display: none;
@@ -601,6 +576,7 @@ footer {
   border: none;
   place-self: center;
   height: 40px;
+  width: 30px;
 }
 .button-Send img {
   height: 100%;
@@ -690,8 +666,6 @@ footer {
   .send-button {
     grid-column: 3;
     grid-row: 3;
-    /* justify-self: start;*/
-    /* align-self: end; */
     margin-right: 2rem;
   }
   .send-button:hover {
@@ -725,7 +699,11 @@ footer {
   background: none;
   border: none;
 }
-
+.menu-toogle img{
+  width: 30px;
+  height: 30px;
+ 
+}
 
 .menuStart {
   position: fixed;
@@ -753,9 +731,6 @@ footer {
 
 
 @media only screen and (min-width: 500px) {
-  /* .menuStart {
- display: none;
-  } */
   .menu-toogle {
     display: none;
   }
@@ -780,9 +755,7 @@ footer {
     height: auto;
     padding: 0;
   }
-  /* .menuOpen {
-    display: none;
-  } */
+
 
   #menu {
     position: static;
@@ -793,13 +766,12 @@ footer {
   }
 }
 
-/* div conversacion individual */
 #conversationI {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
   justify-self: center;
-  overflow-y: auto; /* Habilitar el scroll vertical si es necesario */
+  overflow-y: auto; 
 }
 
 .user-message {
@@ -851,4 +823,26 @@ footer {
   padding: 5px 10px;
   margin-bottom: 10px;
   display: inline-block;
+}
+.error-message div{
+  background-color: rgb(218, 138, 138);
+  color: rgb(0, 0, 0);
+  padding: 30px;
+  border-radius: 10px;
+  display: inline-block;
+  
+}
+.error-message{
+  display: grid;
+  height: 10%;
+  width: auto;
+
+}
+.error-message p{
+  background-color: rgb(218, 138, 138);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 30px;
+  display: inline-block;
+  align-content: center;
 }

@@ -1,7 +1,9 @@
 export const homeComponet = () => {
-    const infoHome = `
+  const infoHome = `
 <header>
-<button id="menu-toggle" class="menu-toogle" aria-label="Abrir menú">&#9776;</button>
+<button id="menu-toggle" class="menu-toogle" aria-label="Abrir menú">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYCDuObAFhBONAysts8pNQ3H2WJFb36z5A-w7W3Y_lWw&s" alt="logo hamburguesa">
+</button>
     <h1>Tu artista favorito, ¡aquí!</h1>
   </header>
   <main>
@@ -38,6 +40,6 @@ export const homeComponet = () => {
     </div>
     <div id="conteinerCompute"></div>
   </main>
-    `
-    return infoHome;
-}
+    `;
+  return infoHome;
+};

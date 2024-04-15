@@ -2,11 +2,9 @@ import { data } from "../data/dataset.js";
 import { navigateTo } from "../router.js";
 import { communicateWithOpenAI } from "../lib/openAIApi.js";
 const ChatGrupal = () => {
-  // Crear el contenedor principal
   const container = document.createElement("div");
   container.classList.add("container");
 
-  // contenedor de infomcación e images
   const informationContainer = document.createElement("div");
   informationContainer.classList.add("information-container");
   container.appendChild(informationContainer);
@@ -32,12 +30,16 @@ const ChatGrupal = () => {
   for (let i = 0; i < data.length; i++) {
     idSinger.push(data[i].id);
 
-    const imagesandTextContainersingle = document.createElement("div");
+    const imagesandTextContainersingle = document.createElement("a");
     imagesandTextContainersingle.classList.add("imagesandtextsingle-container");
 
     const image = document.createElement("img");
     image.src = data[i].imageUrl;
     imagesandTextContainersingle.appendChild(image);
+
+    imagesandTextContainersingle.addEventListener("click", () => {
+      navigateTo("/ChatIndividual", data[i]);
+    });
 
     const nameandshortdescription = document.createElement("div");
     nameandshortdescription.classList.add("nameandshort-description");
@@ -56,7 +58,6 @@ const ChatGrupal = () => {
     imagesandTextContainer.appendChild(imagesandTextContainersingle);
   }
 
-  // contenedor de apikey y chat
   const chatContainer = document.createElement("div");
   chatContainer.classList.add("chat-container");
   container.appendChild(chatContainer);
@@ -69,7 +70,6 @@ const ChatGrupal = () => {
     navigateTo("/api-key");
   });
 
-  // contenedor de input y boton
   const inputContainer = document.createElement("div");
   inputContainer.classList.add("input-Container");
   container.appendChild(inputContainer);
@@ -88,23 +88,37 @@ const ChatGrupal = () => {
 
   inputContainer.appendChild(buttonSend);
   buttonSend.addEventListener("click", async () => {
-    const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
-    chatContainer.innerHTML = "";
-    const userMessageContainer = document.createElement("div");
-    userMessageContainer.classList.add("user-message");
-    const userMessageText = document.createElement("p");
-    userMessageText.textContent = inputText.value;
-    userMessageContainer.appendChild(userMessageText);
-    chatContainer.appendChild(userMessageContainer);
+    try {
+      const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
+      const userMessageContainer = document.createElement("div");
+      userMessageContainer.classList.add("user-message");
+      const userMessageText = document.createElement("p");
+      userMessageText.textContent = inputText.value;
+      userMessageContainer.appendChild(userMessageText);
+      chatContainer.appendChild(userMessageContainer);
 
-    respuesta.forEach((elemento) => {
-      const messageContainer = document.createElement("div");
-      messageContainer.classList.add("response-message");
-      const messageText = document.createElement("p");
-      messageText.textContent = elemento[0].message.content;
-      messageContainer.appendChild(messageText);
-      chatContainer.appendChild(messageContainer);
-    });
+      respuesta.forEach((elemento, i) => {
+        const messageContainer = document.createElement("div");
+        messageContainer.classList.add("response-message");
+        const singerName = document.createElement("p");
+        singerName.textContent = data[i].name;
+        const messageText = document.createElement("p");
+        messageText.textContent = elemento[0].message.content;
+        messageContainer.appendChild(singerName);
+        messageContainer.appendChild(messageText);
+        chatContainer.appendChild(messageContainer);
+        inputText.value = "";
+      });
+    } catch (error) {
+      const errorDiv = document.createElement("div");
+      errorDiv.classList.add("error-message");
+      const messageBubblep = document.createElement("p");
+      messageBubblep.textContent =
+        "Surgió un problema con tu Api Key, por favor revísala";
+      errorDiv.appendChild(messageBubblep);
+      chatContainer.appendChild(errorDiv);
+      inputText.value = "";
+    }
 
     chatContainer.style.overflowY = "auto";
   });

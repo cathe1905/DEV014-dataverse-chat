@@ -23,7 +23,7 @@ export default function Home() {
   let filteredData = [];
   let sortedData;
 
-  //eventos
+  //eventos 
   mainGenre.addEventListener("change", (e) => {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);

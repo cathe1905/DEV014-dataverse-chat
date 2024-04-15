@@ -52,12 +52,10 @@ const ChatIndividual = (props) => {
     navigateTo("/ChatGrupal");
   });
 
-
   const chatContainer = chat.querySelector("#conversationI");
   const sendMessage = chat.querySelector("#send-message");
   const inputMessage = chat.querySelector("#input-message");
 
-  // Función para crear un nuevo mensaje del usuario
   function createUserMessage(messageContent) {
     const userMessageDiv = document.createElement("div");
     userMessageDiv.classList.add("user-message");
@@ -68,7 +66,6 @@ const ChatIndividual = (props) => {
     return userMessageDiv;
   }
 
-  // Función para crear un nuevo mensaje de la IA
   function createIAMessage(messageContent) {
     const IAMessageDiv = document.createElement("div");
     IAMessageDiv.classList.add("ia-message");
@@ -79,24 +76,35 @@ const ChatIndividual = (props) => {
     return IAMessageDiv;
   }
 
-  // Función para enviar un mensaje
   async function sendMessageHandler() {
     const respuesta = await communicateWithOpenAI(inputMessage.value, singerId);
-    const messageContent = respuesta[0][0].message.content;
+    try {
+      const messageContent = respuesta[0][0].message.content;
 
-    // Crear y agregar el mensaje del usuario al contenedor
-    const userMessageDiv = createUserMessage(inputMessage.value);
-    chatContainer.appendChild(userMessageDiv);
+  
+      const userMessageDiv = createUserMessage(inputMessage.value);
+      chatContainer.appendChild(userMessageDiv);
 
-    // Crear y agregar el mensaje de la IA al contenedor
-    const IAMessageDiv = createIAMessage(messageContent);
-    chatContainer.appendChild(IAMessageDiv);
 
-    // Limpiar el input de mensaje
-    inputMessage.value = "";
+      const IAMessageDiv = createIAMessage(messageContent);
+      chatContainer.appendChild(IAMessageDiv);
+
+
+      inputMessage.value = "";
+    } catch (error) {
+      const errorDiv = document.createElement("div");
+      errorDiv.classList.add("error-message");
+      const messageBubble = document.createElement("div");
+      messageBubble.classList.add("message-bubble");
+      messageBubble.textContent =
+        "Surgió un problema con tu Api Key, por favor revísala";
+      errorDiv.appendChild(messageBubble);
+      chatContainer.appendChild(errorDiv);
+      inputMessage.value = "";
+    }
   }
 
-  // Agregar el evento al botón de enviar mensaje
+
   sendMessage.addEventListener("click", sendMessageHandler);
 
   return chat;
