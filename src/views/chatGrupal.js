@@ -1,6 +1,6 @@
 import { data } from "../data/dataset.js";
 import { navigateTo } from "../router.js";
-// import { communicateWithOpenAI } from "../lib/openAIApi.js";
+import { communicateWithOpenAI } from "../lib/openAIApi.js";
 const ChatGrupal = () => {
   // Crear el contenedor principal
   const container = document.createElement("div");
