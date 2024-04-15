@@ -28,7 +28,7 @@ const ApiKey = () => {
 
   const inputApiKeyText = document.createElement("input");
   inputApiKeyText.setAttribute("type", "text");
-  inputApiKeyText.setAttribute("placeholder", "Escribe aqui tu mensaje");
+  inputApiKeyText.setAttribute("placeholder", "Escribe aqui tu ApiKey");
   inputApiKeyText.classList.add("message-api-key-input");
   formContainer.appendChild(inputApiKeyText);
 
