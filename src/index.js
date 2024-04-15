@@ -5,6 +5,7 @@
 // menuToggle.addEventListener('click', () => {
 //   menu.classList.toggle('active');
 // });
+//prueba de commit
 
 import Home from "./views/Home.js";
 import Error from "./views/Error.js";
