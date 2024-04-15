@@ -1,9 +1,10 @@
+import { setApiKey } from "../lib/apiKey.js";
+
 const ApiKey = () => {
   // Crear el contenedor principal
   const containerApikey = document.createElement("div");
   containerApikey.classList.add("containerapikey");
 
-  const key = document.createElement("div");
   const backButton = document.createElement("button");
   const backButtonImage = document.createElement("img");
   backButtonImage.src =
@@ -12,14 +13,9 @@ const ApiKey = () => {
   backButton.classList.add("back-button");
   containerApikey.appendChild(backButton);
 
-  const chatGroupButton = document.createElement("button");
-  chatGroupButton.classList.add("apiKey-button");
-  chatGroupButton.textContent = "Chat Grupal";
-  containerApikey.appendChild(chatGroupButton);
-
   const formContainer = document.createElement("div");
   formContainer.classList.add("form-Container");
-  containerApikey.appendChild(formContainer)
+  containerApikey.appendChild(formContainer);
 
   const titleApikey = document.createElement("h1");
   titleApikey.classList.add("title-apikey");
@@ -34,9 +30,18 @@ const ApiKey = () => {
 
   const saveButton = document.createElement("button");
   saveButton.classList.add("apiKey-save-button");
-  saveButton.textContent = "Chat Grupal";
+  saveButton.textContent = "Guardar";
   formContainer.appendChild(saveButton);
 
+  saveButton.addEventListener("click", () => {
+    if (inputApiKeyText.value === "") {
+      alert("Debes ingresar una ApiKey valida");
+      saveButton.disabled = true;
+    } else {
+      saveButton.disabled = false;
+      setApiKey(inputApiKeyText.value);
+    }
+  });
   return containerApikey;
 };
 

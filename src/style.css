@@ -448,9 +448,15 @@ footer {
 
 .form-Container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  margin-top: 40px; 
+  margin-bottom: 40px; 
 }
-
+.title-apikey{
+  color: var(--black);
+}
 .apiKey-button {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   background-color: var(--Purple);
@@ -572,7 +578,6 @@ footer {
     grid-column-start: 2;
     grid-column-end: 3;
   }
-
   .name-class {
 font-weight: 900;
 }
@@ -613,5 +618,8 @@ font-weight: 900;
   .send-button:hover {
     background-color: #895cc7;
     border-radius: 50px;
+  }
+  .message-api-key-input{
+    width: 800px;
   }
 }
