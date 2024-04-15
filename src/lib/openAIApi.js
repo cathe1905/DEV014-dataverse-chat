@@ -1,6 +1,3 @@
-// src/lib/openAIApi.js
-
-// Importa la función para obtener la API KEY desde apiKey.js
 import { getApiKey } from "./apiKey.js";
 
 export const communicateWithOpenAI = (messages, id) => {
@@ -28,14 +25,12 @@ export const communicateWithOpenAI = (messages, id) => {
       temperature: 0.7,
     };
     return fetch("https://api.openai.com/v1/chat/completions", {
-      //endpoint fetch me retorna una promesa
-      method: "POST", // enviar información
+      method: "POST",
       headers: {
-        //sitaxis del fetch
         "Content-Type": "application/json",
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
-      body: JSON.stringify(data), //este hace parte del metodo: post
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -52,6 +47,4 @@ export const communicateWithOpenAI = (messages, id) => {
     .catch((error) => {
       throw error;
     });
-
-  //Aquí es donde debes implementar la petición con fetch o axios
 };
