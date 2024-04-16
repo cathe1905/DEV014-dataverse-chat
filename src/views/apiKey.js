@@ -44,6 +44,7 @@ const ApiKey = () => {
     } else {
       saveButton.disabled = false;
       setApiKey(inputApiKeyText.value);
+      inputApiKeyText.value= "";
     }
   });
   return containerApikey;

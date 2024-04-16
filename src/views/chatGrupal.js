@@ -38,7 +38,7 @@ const ChatGrupal = () => {
     imagesandTextContainersingle.appendChild(image);
 
     imagesandTextContainersingle.addEventListener("click", () => {
-      navigateTo("/ChatIndividual", data[i]);
+      navigateTo("/ChatIndividual", { id: `${data[i].id}` });
     });
 
     const nameandshortdescription = document.createElement("div");
@@ -70,7 +70,7 @@ const ChatGrupal = () => {
     navigateTo("/api-key");
   });
 
-  const inputContainer = document.createElement("div");
+  const inputContainer = document.createElement("form");
   inputContainer.classList.add("input-Container");
   container.appendChild(inputContainer);
 
@@ -87,27 +87,33 @@ const ChatGrupal = () => {
   buttonSend.classList.add("button-Send");
 
   inputContainer.appendChild(buttonSend);
-  buttonSend.addEventListener("click", async () => {
+  buttonSend.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const userMessageContainer = document.createElement("div");
+    userMessageContainer.classList.add("user-message");
+    const userMessageText = document.createElement("p");
+    userMessageText.textContent = inputText.value;
+    userMessageContainer.appendChild(userMessageText);
+    chatContainer.appendChild(userMessageContainer);
+    inputText.value = "";
+
+    const writing = document.createElement("p");
+    writing.classList.add("writing");
+    writing.textContent = "24 personas estan escribiendo...";
+    chatContainer.appendChild(writing);
+
     try {
       const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
-      const userMessageContainer = document.createElement("div");
-      userMessageContainer.classList.add("user-message");
-      const userMessageText = document.createElement("p");
-      userMessageText.textContent = inputText.value;
-      userMessageContainer.appendChild(userMessageText);
-      chatContainer.appendChild(userMessageContainer);
+
+      chatContainer.removeChild(writing);
 
       respuesta.forEach((elemento, i) => {
         const messageContainer = document.createElement("div");
         messageContainer.classList.add("response-message");
-        const singerName = document.createElement("p");
-        singerName.textContent = data[i].name;
         const messageText = document.createElement("p");
-        messageText.textContent = elemento[0].message.content;
-        messageContainer.appendChild(singerName);
+        messageText.innerHTML = `<span style="font-weight: bold;">${data[i].name}:</span> ${elemento[0].message.content}`;
         messageContainer.appendChild(messageText);
         chatContainer.appendChild(messageContainer);
-        inputText.value = "";
       });
     } catch (error) {
       const errorDiv = document.createElement("div");
