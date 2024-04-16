@@ -2,7 +2,7 @@ import { communicateWithOpenAI } from "../src/lib/openAIApi.js";
 
 window.fetch = jest.fn();
 
-describe("Probamos que la funcion communicateWithOpenAI devuelva lo esperado", () => {
+describe("communicateWithOpenAI return value expected", () => {
   test("should return a message from OpenAI API", async () => {
     const messages = "cual es tu instrumento favorito";
     const id = "shakira";
