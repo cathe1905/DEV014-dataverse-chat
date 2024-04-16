@@ -23,7 +23,7 @@ export default function Home() {
   let filteredData = [];
   let sortedData;
 
-  //eventos 
+  //eventos
   mainGenre.addEventListener("change", (e) => {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
@@ -64,9 +64,9 @@ export default function Home() {
     mainGenre.options[0].selected = true;
     sort.options[0].selected = true;
     filteredData = [];
+    changeCompute.style.display = "none";
   });
 
- 
   const goToChatGrupalBtn = viewEl.querySelector("#goToChatGrupalBtn");
   goToChatGrupalBtn.addEventListener("click", () => {
     navigateTo("/ChatGrupal");
@@ -78,16 +78,16 @@ export default function Home() {
   });
 
   //menu hamburguesa
-  const menu = viewEl.querySelector('#menu');
-  viewEl.querySelector('#menu-toggle').addEventListener('click', menuOpen);
-  viewEl.querySelector('#close-menu').addEventListener('click', menuClose);
+  const menu = viewEl.querySelector("#menu");
+  viewEl.querySelector("#menu-toggle").addEventListener("click", menuOpen);
+  viewEl.querySelector("#close-menu").addEventListener("click", menuClose);
 
   function menuOpen() {
-    menu.classList.add('menuOpen')
-    menu.classList.remove('menuStart')
+    menu.classList.add("menuOpen");
+    menu.classList.remove("menuStart");
   }
   function menuClose() {
-    menu.classList.add('menuStart');   
+    menu.classList.add("menuStart");
   }
 
   return viewEl;

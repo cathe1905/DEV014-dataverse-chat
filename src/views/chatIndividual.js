@@ -29,10 +29,10 @@ const ChatIndividual = (props) => {
     </div>
 
     
-    <div class="flex-Input">
+    <form class="flex-Input">
     <input  id="input-message" class="message-input" type="text" placeholder="Escribe aqui tu mensaje">
     <button id="send-message" class="button-Send" type="submit"><img  src="https://cdn-icons-png.freepik.com/512/8138/8138457.png" alt="boton enviar mensaje"></button>
-    </div>
+    </form>
       
 
   `;
@@ -77,8 +77,8 @@ const ChatIndividual = (props) => {
   }
 
   async function sendMessageHandler() {
-    const respuesta = await communicateWithOpenAI(inputMessage.value, singerId);
     try {
+      const respuesta = await communicateWithOpenAI(inputMessage.value, singerId);
       const messageContent = respuesta[0][0].message.content;
 
   
@@ -92,6 +92,8 @@ const ChatIndividual = (props) => {
 
       inputMessage.value = "";
     } catch (error) {
+      const userMessageDiv = createUserMessage(inputMessage.value);
+      chatContainer.appendChild(userMessageDiv);
       const errorDiv = document.createElement("div");
       errorDiv.classList.add("error-message");
       const messageBubble = document.createElement("div");
@@ -105,7 +107,10 @@ const ChatIndividual = (props) => {
   }
 
 
-  sendMessage.addEventListener("click", sendMessageHandler);
+  sendMessage.addEventListener("click", (e) => {
+    e.preventDefault();
+    sendMessageHandler();
+  });
 
   return chat;
 };
