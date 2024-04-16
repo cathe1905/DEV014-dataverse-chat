@@ -1,83 +1,17 @@
 import { data } from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { navigateTo } from "../router.js";
+import { homeComponet } from "../components/homeInfo.js";
+import { cards } from "../components/functions.js";
 
 export default function Home() {
   const viewEl = document.createElement("div");
   const infohtml = document.createElement("body");
-  infohtml.innerHTML = `
-  <header>
-      <h1>Tu artista favorito, ¡aquí!</h1>
-    </header>
-    <main>
-      <h2>Encuentra la información más top de tus artistas favoritos</h2>
-      <div class="grid">
-        <div class="flex-container">
-          <div>
-            <label for="mainGenre"></label>
-            <select name="mainGenre" id="mainGenre" data-testid="select-filter" > 
-              <option value="" disabled selected>Tipo de Música</option>
-              <option value="Pop">Pop</option>
-              <option value="Latino">Latino</option>
-              <option value="Rock">Rock</option>
-              <option value="R&B">R&B</option>
-              <option value="Reggae">Reggae</option>
-            </select>
-          </div>
-          <div>
-            <label for="sort"></label>
-            <select name="sort" id="sort" data-testid="select-sort">
-              <option value="" disabled selected>Organizar por:</option>
-              <option value="asc">Ascendente por año de nacimiento</option>
-              <option value="desc">Descendente por año de nacimiento</option>
-            </select>
-          </div>
-          <button id="compute">Dato Random</button>
-        </div>
-        <div class="segundo-grupo">
-          <button data-testid="button-clear" id="buttonClear">Limpiar Filtros</button>
-          <button id="api-key">Api Key</button>
-          <button id="goToChatGrupalBtn">Chat Grupal</button>
-        </div>
-      </div>
-      <div id="conteinerCompute"></div>
+  infohtml.innerHTML = homeComponet();
 
-    </main>
-      `;
   viewEl.appendChild(infohtml);
 
-  function cards(data) {
-    limpiarHTML();
-    const ulList = document.createElement("ul");
-    ulList.classList.add("styleUl", "contenedorCards");
-
-    data.forEach((singer) => {
-      const enlace = document.createElement("a");
-      enlace.id = `${singer.id}`;
-      enlace.addEventListener("click", () => {
-        navigateTo("/ChatIndividual", { id: `${singer.id}` });
-      });
-      const liSinger = document.createElement("li");
-      liSinger.classList.add("styleLi");
-      const dlSinger = document.createElement("dl");
-      liSinger.setAttribute("itemtype", "singers");
-      liSinger.setAttribute("itemscope", "");
-      dlSinger.innerHTML = `
-            <dt class="nameSinger">${singer.name}</dt>
-            <img src="${singer.imageUrl}">
-            <dt itemprop="shortDescription" class="shortDescription" >${singer.shortDescription}</dt>
-            <dt itemprop="sort" class="yearOfBirth"> <span>Año de Nacimiento:</span> ${singer.facts.yearOfBirth}</dt>
-            <dt itemprop="placeOfBirth" class="placeOfBirth"> <span>Lugar de Nacimiento:</span> ${singer.facts.placeOfBirth}</dt>
-            <dt itemprop="mainGenre" class="mainGenre"> <span>Género:</span>${singer.facts.mainGenre}</dt>
-          `;
-      liSinger.appendChild(dlSinger);
-      enlace.appendChild(liSinger);
-      ulList.appendChild(enlace);
-      viewEl.appendChild(ulList);
-    });
-  }
-
-  cards(data);
+  cards(data, viewEl);
 
   //variables
   const mainGenre = viewEl.querySelector("#mainGenre");
@@ -93,22 +27,25 @@ export default function Home() {
   mainGenre.addEventListener("change", (e) => {
     const optionValue = e.target.value;
     filteredData = filterData(data, "mainGenre", optionValue);
-    cards(filteredData);
+    cards(filteredData, viewEl);
+    menuClose();
   });
 
   sort.addEventListener("change", (e) => {
     const optionSort = e.target.value;
+    menuClose();
     if (filteredData.length > 0) {
       sortedData = sortData(filteredData, "yearOfBirth", optionSort);
-      cards(sortedData);
+      cards(sortedData, viewEl);
     } else {
       sortedData = sortData(data, "yearOfBirth", optionSort);
-      cards(sortedData);
+      cards(sortedData, viewEl);
     }
   });
 
   compute.addEventListener("click", function () {
     const cumputeResult = computeStats(data);
+    menuClose();
     if (changeCompute.style.display === "none") {
       changeCompute.style.display = "block";
       changeCompute.innerHTML =
@@ -122,18 +59,14 @@ export default function Home() {
   });
 
   cleanButton.addEventListener("click", () => {
-    // renderItems(data);
-    cards(data);
+    cards(data, viewEl);
+    menuClose();
     mainGenre.options[0].selected = true;
     sort.options[0].selected = true;
     filteredData = [];
+    changeCompute.style.display = "none";
   });
 
-  function limpiarHTML() {
-    while (viewEl.children[1]) {
-      viewEl.removeChild(viewEl.children[1]);
-    }
-  }
   const goToChatGrupalBtn = viewEl.querySelector("#goToChatGrupalBtn");
   goToChatGrupalBtn.addEventListener("click", () => {
     navigateTo("/ChatGrupal");
@@ -143,6 +76,19 @@ export default function Home() {
   goToApiKey.addEventListener("click", () => {
     navigateTo("/api-key");
   });
+
+  //menu hamburguesa
+  const menu = viewEl.querySelector("#menu");
+  viewEl.querySelector("#menu-toggle").addEventListener("click", menuOpen);
+  viewEl.querySelector("#close-menu").addEventListener("click", menuClose);
+
+  function menuOpen() {
+    menu.classList.add("menuOpen");
+    menu.classList.remove("menuStart");
+  }
+  function menuClose() {
+    menu.classList.add("menuStart");
+  }
 
   return viewEl;
 }

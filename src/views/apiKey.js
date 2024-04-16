@@ -1,7 +1,7 @@
 import { setApiKey } from "../lib/apiKey.js";
+import { navigateTo } from "../router.js";
 
 const ApiKey = () => {
-  // Crear el contenedor principal
   const containerApikey = document.createElement("div");
   containerApikey.classList.add("containerapikey");
 
@@ -12,6 +12,10 @@ const ApiKey = () => {
   backButton.appendChild(backButtonImage);
   backButton.classList.add("back-button");
   containerApikey.appendChild(backButton);
+
+  backButton.addEventListener("click", () => {
+    navigateTo("/");
+  });
 
   const formContainer = document.createElement("div");
   formContainer.classList.add("form-Container");
@@ -24,7 +28,7 @@ const ApiKey = () => {
 
   const inputApiKeyText = document.createElement("input");
   inputApiKeyText.setAttribute("type", "text");
-  inputApiKeyText.setAttribute("placeholder", "Escribe aqui tu mensaje");
+  inputApiKeyText.setAttribute("placeholder", "Escribe aqui tu ApiKey");
   inputApiKeyText.classList.add("message-api-key-input");
   formContainer.appendChild(inputApiKeyText);
 
@@ -40,6 +44,7 @@ const ApiKey = () => {
     } else {
       saveButton.disabled = false;
       setApiKey(inputApiKeyText.value);
+      inputApiKeyText.value= "";
     }
   });
   return containerApikey;
