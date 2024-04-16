@@ -1,6 +1,6 @@
 import { communicateWithOpenAI } from "../src/lib/openAIApi.js";
 
-global.fetch = jest.fn();
+window.fetch = jest.fn();
 
 describe("Probamos que la funcion communicateWithOpenAI devuelva lo esperado", () => {
   test("should return a message from OpenAI API", async () => {

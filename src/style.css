@@ -50,6 +50,11 @@ h2 {
   margin: 1rem 0;
   display:inline-block
 }
+.writing {
+  color: blue;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
 
 option {
   width: 250px;
