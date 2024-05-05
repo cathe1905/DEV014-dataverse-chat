@@ -95,7 +95,7 @@ const ChatGrupal = () => {
     userMessageText.textContent = inputText.value;
     userMessageContainer.appendChild(userMessageText);
     chatContainer.appendChild(userMessageContainer);
-    inputText.value = "";
+    
 
     const writing = document.createElement("p");
     writing.classList.add("writing");
@@ -104,6 +104,7 @@ const ChatGrupal = () => {
 
     try {
       const respuesta = await communicateWithOpenAI(inputText.value, idSinger);
+      inputText.value = "";
 
       chatContainer.removeChild(writing);
 

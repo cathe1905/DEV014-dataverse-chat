@@ -19,7 +19,7 @@ export const communicateWithOpenAI = (messages, id) => {
         { role: "user", content: `${messages}` },
         {
           role: "system",
-          content: `Responde en primera persona como si fuera este cantante:${id}`,
+          content: `Responde en primera persona como si fuera este cantante:${id}, si la pregunta es en plural de igual forma responde en primera persona y no te despidas a menos que el mensaje sea de despedida`,
         },
       ],
       temperature: 0.7,
